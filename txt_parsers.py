@@ -8,7 +8,10 @@ def extract_text(file_path: str) -> str:
     Returns:
         The contents of the file as a string.
     """
-    
+    if not file_path:
+        raise ValueError("File path cannot be empty.")
+    if not file_path.lower().endswith(".txt"):
+        raise ValueError("Invalid file format. Please provide a .txt file.")
     with open(file_path, "r", encoding="utf-8") as file:
         text = file.read()
     return text
